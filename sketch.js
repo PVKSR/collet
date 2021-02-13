@@ -22,14 +22,14 @@ function preload(){
 
 function setup(){
   
-  createCanvas(400,400);
+  createCanvas(windowWidth,windowHeight);
 // Moving background
-path=createSprite(200,200);
+path=createSprite(width/2,200);
 path.addImage(pathImg);
 
 
 //creating boy running
-boy = createSprite(70,330,20,20);
+boy = createSprite(width/2,height-20,20,20);
 boy.addAnimation("SahilRunning",boyImg);
 boy.scale=0.08;
 //boy.debug=true;  
@@ -112,8 +112,8 @@ path.velocityY = (4 + score/200);
     jwelleryG.destroyEach(10)
   
     boy.changeAnimation("SahilRunnin",endImg);
-    boy.x=200;
-    boy.y=200;
+    boy.x=windowWidth(1/2);
+    boy.y=windowHeigth(1/2);
     boy.scale=1
     runs.pause();
     if(keyDown("space")){
@@ -125,7 +125,7 @@ path.velocityY = (4 + score/200);
   
   
     //code to reset the background
-  if(path.y > 400 ){
+  if(path.y > heigth ){
     path.y = height/2;
   }
   
@@ -134,13 +134,13 @@ path.velocityY = (4 + score/200);
   drawSprites();
   textSize(20);
   fill(255);
-  text("Treasure: "+ score,70,30);
+  text("Treasure: "+ score,width-50,30);
 
 }
 
 function createCash() {
   if (World.frameCount % 50 == 0) {
-  var cash = createSprite(Math.round(random(50, 350),40, 10, 10));
+  var cash = createSprite(Math.round(random(50, width-50),40, 10, 10));
   cash.addImage(cashImg);
   cash.scale=0.12;
   cash.velocityY = (4 + score/200);;
@@ -152,7 +152,7 @@ function createCash() {
 
 function createDiamonds() {
   if (World.frameCount % 80 == 0) {
-  var diamonds = createSprite(Math.round(random(50, 350),40, 10, 10));
+  var diamonds = createSprite(Math.round(random(50, width-50),40, 10, 10));
   diamonds.addImage(diamondsImg);
   diamonds.scale=0.03;
   diamonds.velocityY = (4 + score/200);;
@@ -163,7 +163,7 @@ function createDiamonds() {
 
 function createJwellery() {
   if (World.frameCount % 80 == 0) {
-  var jwellery = createSprite(Math.round(random(50, 350),40, 10, 10));
+  var jwellery = createSprite(Math.round(random(50, width-50),40, 10, 10));
   jwellery.addImage(jwelleryImg);
   jwellery.scale=0.13;
   jwellery.velocityY = (4 + score/200);;
@@ -174,7 +174,7 @@ function createJwellery() {
 
 function createSword(){
   if (World.frameCount % 150 == 0) {
-  var sword = createSprite(Math.round(random(50, 350),40, 10, 10));
+  var sword = createSprite(Math.round(random(50, width-50),40, 10, 10));
   sword.addImage(swordImg);
   sword.scale=0.1;
   sword.velocityY = (4 + score/200);;
